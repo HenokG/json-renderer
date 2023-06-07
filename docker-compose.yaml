@@ -1,0 +1,9 @@
+services:
+  react-app:
+    image: heyflow
+    build:
+      context: .
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./src:/app/src
