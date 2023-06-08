@@ -21,7 +21,7 @@ const App: FunctionComponent<{ src: Record<string, unknown> | unknown[] }> = ({
   const [selection, setSelection] = useState<Selection>();
 
   const onKeyClick = (path: string) => {
-    setSelection({ key: path, value: get(src, path) });
+    setSelection({ key: path, value: JSON.stringify(get(src, path)) });
   };
 
   return (
