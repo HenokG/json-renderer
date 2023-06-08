@@ -31,6 +31,7 @@ export const RenderValue: FunctionComponent<ValueProps> = ({
                 keyPath={`${keyPath}[${i}]`}
                 onKeyClick={onKeyClick}
               />
+              {i !== value.length - 1 && <span>,</span>}
             </div>
           ))}
         </div>
@@ -38,7 +39,9 @@ export const RenderValue: FunctionComponent<ValueProps> = ({
         {indentLevel !== 0 && <span>]</span>}
       </>
     );
-  } else if (typeof value === 'object') {
+  }
+
+  if (typeof value === 'object') {
     const keys = Object.keys(value);
     return keys.length === 0 ? (
       <span>{'{}'}</span>
@@ -57,7 +60,7 @@ export const RenderValue: FunctionComponent<ValueProps> = ({
         <span>{'}'}</span>
       </>
     );
-  } else {
-    return <span onClick={() => onKeyClick(keyPath)}>{value}</span>;
   }
+
+  return <span onClick={() => onKeyClick(keyPath)}>{String(value)}</span>;
 };

@@ -21,4 +21,4 @@ const SelectionResult: FunctionComponent<{
   </StyledDiv>
 );
 
-export default SelectionResult;
+export { SelectionResult };

@@ -4,7 +4,7 @@ import { FunctionComponent } from 'react';
 import { RenderValue } from './RenderValue';
 
 export interface RenderObjectProps {
-  value: Record<string, any>;
+  value: Record<string, unknown>;
   indentLevel: number;
   onKeyClick: (path: string) => void;
   parentPath?: string;

@@ -1,14 +1,23 @@
 import { JsonExplorer } from './components/JSONExplorer';
-import SelectionResult from './components/SelectionResult';
-import { FC, useState } from 'react';
+import { SelectionResult } from './components/SelectionResult';
+import { FunctionComponent, useState } from 'react';
 import { get } from 'lodash';
+import { styled } from 'styled-components';
 
 interface Selection {
   key: string;
   value: any;
 }
 
-const App: FC<{ src: any }> = ({ src }) => {
+const StyledParagraph = styled.p`
+  font-style: italic;
+  font-weight: bold;
+  color: lightseagreen;
+`;
+
+const App: FunctionComponent<{ src: Record<string, unknown> | unknown[] }> = ({
+  src
+}) => {
   const [selection, setSelection] = useState<Selection>();
 
   const onKeyClick = (path: string) => {
@@ -17,11 +26,13 @@ const App: FC<{ src: any }> = ({ src }) => {
 
   return (
     <div className="App">
-      {selection?.key && (
+      {selection?.key ? (
         <SelectionResult
           selectedKey={selection.key}
           selectedValue={selection.value}
         />
+      ) : (
+        <StyledParagraph>Click a key or value to see result</StyledParagraph>
       )}
       <JsonExplorer data={src} indentLevel={1} onKeyClick={onKeyClick} />
     </div>
