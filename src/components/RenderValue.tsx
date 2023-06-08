@@ -1,6 +1,7 @@
 import { Indentation } from './Indentation';
 import { FunctionComponent } from 'react';
 import { RenderObject } from './RenderObject';
+import { isNumber } from '../helpers';
 
 export interface ValueProps {
   value: any;
@@ -8,6 +9,12 @@ export interface ValueProps {
   onKeyClick: (path: string) => void;
   keyPath?: string;
 }
+
+const shouldRenderWithQuotes = (value: unknown): boolean => {
+  const isBoolean =
+    typeof value === 'boolean' || value === 'false' || value === 'true';
+  return !isBoolean && !isNumber(String(value));
+};
 
 export const RenderValue: FunctionComponent<ValueProps> = ({
   value,
@@ -62,5 +69,9 @@ export const RenderValue: FunctionComponent<ValueProps> = ({
     );
   }
 
-  return <span onClick={() => onKeyClick(keyPath)}>{String(value)}</span>;
+  return (
+    <span onClick={() => onKeyClick(keyPath)}>
+      {shouldRenderWithQuotes(value) ? `'${value}'` : String(value)}
+    </span>
+  );
 };

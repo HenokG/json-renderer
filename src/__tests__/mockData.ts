@@ -6,5 +6,5 @@ export const mockData: Record<string, unknown> = {
   date: '1983-07-10',
   enum: 'generator',
   firstname: 'Cordi',
-  array: ['Lynnea', 'Agnese', 'Aeriela', 'Courtnay', 'Tabbatha']
+  array: [{ name: 'Lynnea' }, 'Agnese', 'Aeriela', 'Courtnay', 'Tabbatha']
 };

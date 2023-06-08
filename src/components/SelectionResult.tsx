@@ -16,7 +16,7 @@ const SelectionResult: FunctionComponent<{
 }> = ({ selectedKey, selectedValue }) => (
   <StyledDiv>
     <span>Selected: </span>
-    <StyledSpan>{selectedKey}</StyledSpan> with value of{' '}
+    <StyledSpan>res.{selectedKey}</StyledSpan> with value of{' '}
     <StyledSpan>{String(selectedValue)}</StyledSpan>
   </StyledDiv>
 );
