@@ -10,9 +10,19 @@ const StyledSpan = styled.span`
   }
 `;
 
-export const ObjectKey: FunctionComponent<{
+interface Props {
   value: string;
   onClick: () => void;
-}> = ({ value, onClick }) => {
-  return <StyledSpan onClick={onClick}>{`${value}: `}</StyledSpan>;
-};
+  isClickable: boolean;
+}
+
+export const ObjectKey: FunctionComponent<Props> = ({
+  value,
+  onClick,
+  isClickable = true
+}) =>
+  isClickable ? (
+    <StyledSpan onClick={onClick}>{`${value}: `}</StyledSpan>
+  ) : (
+    <span>{`${value}: `}</span>
+  );

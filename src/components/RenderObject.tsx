@@ -2,6 +2,7 @@ import { Indentation } from './Indentation';
 import { ObjectKey } from './ObjectKey';
 import { FunctionComponent } from 'react';
 import { RenderValue } from './RenderValue';
+import { isObjectOrArray } from '../helpers';
 
 export interface RenderObjectProps {
   value: Record<string, unknown>;
@@ -25,6 +26,7 @@ export const RenderObject: FunctionComponent<RenderObjectProps> = ({
           <div key={key}>
             <Indentation indentLevel={indentLevel} />
             <ObjectKey
+              isClickable={!isObjectOrArray(value[key])}
               value={key}
               onClick={() => onKeyClick(keyPath)}
             ></ObjectKey>
