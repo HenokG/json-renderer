@@ -26,7 +26,7 @@ const dataTypeToRenderMap: Record<string, RenderProps> = {
   }
 };
 
-const JsonExplorer: React.FC<Props> = ({
+const JsonExplorer: FunctionComponent<Props> = ({
   data,
   onKeyClick,
   indentLevel = 0

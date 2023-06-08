@@ -3,6 +3,7 @@ import { SelectionResult } from './components/SelectionResult';
 import { FunctionComponent, useState } from 'react';
 import { get } from 'lodash';
 import { styled } from 'styled-components';
+import { JSONData } from './types';
 
 interface Selection {
   key: string;
@@ -15,9 +16,7 @@ const StyledParagraph = styled.p`
   color: lightseagreen;
 `;
 
-const App: FunctionComponent<{ src: Record<string, unknown> | unknown[] }> = ({
-  src
-}) => {
+const App: FunctionComponent<{ src: JSONData }> = ({ src }) => {
   const [selection, setSelection] = useState<Selection>();
 
   const onKeyClick = (path: string) => {
